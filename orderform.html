@@ -8,193 +8,202 @@
     <link rel="stylesheet" href="./styles/style.css">
 
     <style>
-        
+        body {
+            align-items: center;
+        }
 
-      
+        #orderform {
+            border: 2px solid #6f4f37;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            margin-top: 5px;
+            margin-left: 350px;
+        }
 
-body {
-  align-items: center;
-}
+        h1 {
+            font-size: 40px;
+            color: #6f4f37;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
+        }
 
+        #tt {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            border: none;
+        }
 
-#orderform {
-  border: 2px solid #6f4f37;
-  border-radius: 10px;
-  padding: 10px;
-  width: 90%;
-  max-width: 600px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  margin-top: 5px;
-  margin-left: 350px;
-}
+        #tt td, #tt th {
+            border: none;
+            padding: 10px;
+            text-align: left;
+        }
 
-h1 {
-  font-size: 40px;
-  color: #6f4f37;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  text-align: center;
-}
+        label {
+            font-weight: bold;
+            color: #6f4f37;
+        }
 
+        select, input[type="text"], input[type="number"], input[type="tel"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #d1c0a1;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #6f4f37;
+            background-color: #f4f1e1;
+            box-sizing: border-box;
+        }
 
-#tt {
-  border-collapse: collapse; 
-  width: 100%;
-  background-color: #fff;
-  border: none; 
-}
+        select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+            outline: none;
+            border-color: #6f4f37;
+            background-color: #fff;
+        }
 
-#tt td, #tt th {
-  border: none;
-  padding: 10px; 
-  text-align: left;
-}
+        .errorBlock {
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+        }
 
+        button {
+            width: 150px;
+            height: 45px;
+            background: transparent;
+            border: 2px solid #b2744c;
+            color: #b2744c;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.5s;
+            cursor: pointer;
+        }
 
-label {
-  font-weight: bold;
-  color: #6f4f37;
-}
+        button:hover {
+            background: saddlebrown;
+            color: white;
+        }
 
-select, input[type="text"], input[type="number"], input[type="tel"], input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border: 1px solid #d1c0a1;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #6f4f37;
-  background-color: #f4f1e1;
-  box-sizing: border-box;
-}
-
-
-select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
-  outline: none;
-  border-color: #6f4f37;
-  background-color: #fff;
-}
-
-
-.errorBlock {
-  color: red;
-  font-size: 12px;
-  margin-top: 10px;
-}
-
-
-button {
-  width: 150px;
-  height: 45px;
-  background: transparent;
-  border: 2px solid #b2744c;
-  color: #b2744c;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-button:hover {
-  background: saddlebrown;
-  color: white;
-}
-
-
-#buttons {
-  text-align: center;
-  width: 100%; 
-  display: flex;
-  place-items: center;
-  
-  gap: 40px; 
-}
-
-
-
-
+        #buttons {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            place-items: center;
+            gap: 40px;
+        }
     </style>
-
 </head>
 
 <body>
-    
+
+<section id="orderform">
+    <h1>Place your order here...</h1>
+    <form id="orderForm" onsubmit="return validateAll()">
+        <table id="tt">
+            <tr>
+                <td id="ttt"><label for="coffee">Select the Coffee or Product you want to order:</label></td>
+                <td>
+                    <select id="coffee" name="coffee" required>
+                        <option value="">Select a product</option>
+                        <option value="Dalgona Coffee">Dalgona Coffee</option>
+                        <option value="Brew Espresso Coffee">Brew Espresso Coffee</option>
+                        <option value="Iced Coffee">Iced Coffee</option>
+                        <option value="Black Espresso Coffee">Black Espresso Coffee</option>
+                        <option value="Mocha Coffee">Mocha Coffee</option>
+                        <option value="Mexican Coffee">Mexican Coffee</option>
+                        <option value="Cappuccino Coffee">Cappuccino Coffee</option>
+                        <option value="Arabic Coffee">Arabic Coffee</option>
+                        <option value="Cappuccino Coffee Raw">Cappuccino Coffee Raw</option>
+                        <option value="Black Coffee">Black Coffee</option>
+                        <option value="Decaf Coffee">Decaf Coffee</option>
+                        <option value="Cortado Coffee">Cortado Coffee</option>
+                        <option value="Caramel macchiato">Caramel macchiato</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="errorBlock">
+                <td></td><td><span id="error1"></span></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Quantity:</label></td>
+                <td><input type="number" id="quantity" name="quantity" min="1" required></td>
+            </tr>
+            <tr class="errorBlock">
+                <td></td><td><span id="error2"></span></td>
+            </tr>
+            <tr>
+                <td><label for="address">Delivery Address:</label></td>
+                <td><input type="text" id="address" name="address" required></td>
+            </tr>
+            <tr class="errorBlock">
+                <td></td><td><span id="error3"></span></td>
+            </tr>
+            <tr>
+                <td><label for="contact">Contact Number:</label></td>
+                <td><input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required></td>
+            </tr>
+            <tr class="errorBlock">
+                <td></td><td><span id="error4"></span></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr class="errorBlock">
+                <td></td><td><span id="error5"></span></td>
+            </tr>
+        </table>
+        
+        <div colspan="2" id="buttons">
+            <button style="margin-left: 33px;" type="submit" class="submit-button">Submit</button>
+            <button type="reset" class="reset-button">Reset</button>
+            <a href="/" class="back-button" style="text-decoration: none;">
+                <button type="button" class="back-button">Back to Home</button>
+            </a>
+        </div>
+    </form>
+</section>
+
+<script>
+
+document.getElementById('contact').addEventListener('input', function() {
+    var contactNumber = this.value;
 
     
-    <section id="orderform">
+    if (contactNumber.length > 10) {
+        
+        this.value = contactNumber.slice(0, 10);
+        
+        
+        document.getElementById('error4').textContent = "Mobile number cannot exceed 10 digits.";
+    } else {
       
-            <h1>Place your order here...</h1>
-          
-        <form id="orderForm" onsubmit="return validateAll()">
-            <table id="tt" >
-                <tr>
-                    <td id="ttt"><label for="coffee">Select the Coffee you want to order:</label></td>
-                    <td>
-                        <select id="coffee" name="coffee" required>
-                            <option value="">Select a product</option>
-                            <option value="Dalgona Coffee">Dalgona Coffee</option>
-                            <option value="Brew Espresso Coffee">Brew Espresso Coffee</option>
-                            <option value="Iced Coffee">Iced Coffee</option>
-                            <option value="Black Espresso Coffee">Black Espresso Coffee</option>
-                            <option value="Mocha Coffee">Mocha Coffee</option>
-                            <option value="Mexican Coffee">Mexican Coffee</option>
-                            <option value="Cappuccino Coffee">Cappuccino Coffee</option>
-                            <option value="Arabic Coffee">Arabic Coffee</option>
-                            <option value="Cappuccino Coffee Raw">Cappuccino Coffee Raw</option>
-                            <option value="Black Coffee">Black Coffee</option>
-                            <option value="Decaf Coffee">Decaf Coffee</option>
-                            <option value="Decaf Coffee">Cortado Coffee</option>
-                            <option value="Caramel macchiato">Caramel macchiato</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="errorBlock">
-                    <td></td><td><span id="error1"></span></td>
-                </tr>
-                <tr>
-                    <td><label for="quantity">Quantity:</label></td>
-                    <td><input type="number" id="quantity" name="quantity" min="1" required></td>
-                </tr>
-                <tr class="errorBlock">
-                    <td></td><td><span id="error2"></span></td>
-                </tr>
-                <tr>
-                    <td><label for="address">Delivery Address:</label></td>
-                    <td><input type="text" id="address" name="address" required></td>
-                </tr>
-                <tr class="errorBlock">
-                    <td></td><td><span id="error3"></span></td>
-                </tr>
-                <tr>
-                    <td><label for="contact">Contact Number:</label></td>
-                    <td><input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required></td>
-                </tr>
-                <tr class="errorBlock">
-                    <td></td><td><span id="error4"></span></td>
-                </tr>
-                <tr>
-                    <td><label for="email">Email:</label></td>
-                    <td><input type="email" id="email" name="email" required></td>
-                </tr>
-                <tr class="errorBlock">
-                    <td></td><td><span id="error5"></span></td>
-                </tr>
-                </table>
-                
-                    <div colspan="2" id="buttons" >
-                        <button  style="margin-left: 130px ; " type="submit" class="submit-button">Submit</button>
-                        
-                        <button type="reset" class="reset-button">Reset</button>
-                       
-</div>
-             
-                  
-            <!-- </table> -->
-        </form>
-    </section>
+        document.getElementById('error4').textContent = "";
+    }
+});
 
-    <script src="./scripts/script.js"></script>
+/
+document.getElementById('email').addEventListener('input', function() {
+    var email = this.value;
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    
+    if (!emailRegex.test(email)) {
+        document.getElementById('error5').textContent = "Please enter a valid email address.";
+    } else {
+        document.getElementById('error5').textContent = ""; 
+    }
+});
+</script>
+
+<script src="./scripts/script.js"></script>
 </body>
 </html>

@@ -10,82 +10,83 @@
     <style>
         
 
-        body {
-   
-   align-items: center; 
- }
- 
- 
- #orderform {
-   border: 2px solid #6f4f37;
-   border-radius: 10px;
-   padding: 10px; 
-   width: 90%;
-   max-width: 600px; 
-   background-color: #fff;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- 
-   flex-direction: column; 
-   margin-left: 350px;
- }
- 
- h1 {
-   font-size: 40px;
-   color: #6f4f37;
-   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-   padding: 10px;
- }
- 
- 
- table {
-/*    border-collapse: collapse; */
-   width: 100%;
-   background-color: #fff;
- }
- 
- th, td {
-   padding: 10px;
-   text-align: left;
- }
- 
- th {
-   background-color: #6f4f37;
-   color: white;
-   border-radius: 5px;
- }
- 
- label {
-   font-weight: bold;
-   color: #6f4f37;
- }
- 
- select, input[type="text"], input[type="number"], input[type="tel"], input[type="email"] {
-   width: 100%;
-   padding: 10px;
-   margin-top: 6px;
-   border: 1px solid #d1c0a1;
-   border-radius: 5px;
-   font-size: 14px;
-   color: #6f4f37;
-   background-color: #f4f1e1;
-   box-sizing: border-box;
- }
- 
- select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
-   outline: none;
-   border-color: #6f4f37;
-   background-color: #fff;
- }
- 
- .errorBlock {
-   color: red;
-   font-size: 12px;
-   margin-top: 10px;
- }
+      
 
- button{
- 
- width: 150px;
+body {
+  align-items: center;
+}
+
+
+#orderform {
+  border: 2px solid #6f4f37;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  margin-top: 5px;
+  margin-left: 350px;
+}
+
+h1 {
+  font-size: 40px;
+  color: #6f4f37;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+}
+
+
+#tt {
+  border-collapse: collapse; 
+  width: 100%;
+  background-color: #fff;
+  border: none; 
+}
+
+#tt td, #tt th {
+  border: none;
+  padding: 10px; 
+  text-align: left;
+}
+
+
+label {
+  font-weight: bold;
+  color: #6f4f37;
+}
+
+select, input[type="text"], input[type="number"], input[type="tel"], input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #d1c0a1;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #6f4f37;
+  background-color: #f4f1e1;
+  box-sizing: border-box;
+}
+
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+  outline: none;
+  border-color: #6f4f37;
+  background-color: #fff;
+}
+
+
+.errorBlock {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+
+button {
+  width: 150px;
   height: 45px;
   background: transparent;
   border: 2px solid #b2744c;
@@ -100,14 +101,17 @@ button:hover {
   background: saddlebrown;
   color: white;
 }
- 
- #buttons {
-   text-align: center;
- }
 
- h1{
-    text-align: center;
- }
+
+#buttons {
+  text-align: center;
+  width: 100%; 
+  display: flex;
+  place-items: center;
+  
+  gap: 40px; 
+}
+
 
 
 
@@ -124,9 +128,9 @@ button:hover {
             <h1>Place your order here...</h1>
           
         <form id="orderForm" onsubmit="return validateAll()">
-            <table >
+            <table id="tt" >
                 <tr>
-                    <td><label for="coffee">Select the Coffee or Product you want to order:</label></td>
+                    <td id="ttt"><label for="coffee">Select the Coffee or Product you want to order:</label></td>
                     <td>
                         <select id="coffee" name="coffee" required>
                             <option value="">Select a product</option>
@@ -177,17 +181,17 @@ button:hover {
                 <tr class="errorBlock">
                     <td></td><td><span id="error5"></span></td>
                 </tr>
-                <tr>
-                    <td colspan="2" id="buttons">
-                        <button type="submit" class="submit-button">Submit</button>
+                </table>
+                
+                    <div colspan="2" id="buttons" >
+                        <button  style="margin-left: 130px ; " type="submit" class="submit-button">Submit</button>
                         
                         <button type="reset" class="reset-button">Reset</button>
                        
-
+</div>
              
-                    </td>
-                </tr>
-            </table>
+                  
+            <!-- </table> -->
         </form>
     </section>
 

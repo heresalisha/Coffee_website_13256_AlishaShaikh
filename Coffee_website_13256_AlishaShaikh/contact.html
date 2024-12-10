@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee with Alisha</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/jquery/jquery-3.7.1.min.js"></script>
+
+    <style>
+         body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f9f1e3;
+        }
+
+
+
+        header {
+            background-color: #6f4f37;
+            
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            
+        }
+
+        nav a:hover {
+            background-color: #c56b3c;
+            color: white;
+            transform: scale(1.1);
+        }
+
+
+        nav a {
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid #c56b3c;
+        }
+
+
+        @media (max-width: 768px) {
+            nav {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        main {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px; 
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        h2 {
+            text-align: center;
+            color: #6f4f37;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            
+        }
+
+        #contactForm {
+            border: 2px solid #6f4f37;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 30px auto;
+            height: 420px
+        }
+
+
+        /* #contactForm {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        } */
+
+
+        label {
+            font-size: 1.1em;
+            color: #6f4f37;
+            margin-bottom: 8px;
+             padding: 20px;
+    padding-left: 20px; 
+        }
+
+        input,
+        textarea {
+            padding: 7px;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 95%;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 20px;
+        }
+
+        .button-container button {
+            width: 48%;
+            padding: 10px 20px;
+            background-color: #6f4f37;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c56b3c;
+        }
+
+
+
+        button {
+            padding: 10px 20px;
+            background-color: #6f4f37;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+     
+        #buttons {
+            text-align: center;
+        }
+
+  
+        .blogs {
+            background-color: #f9f1e3;
+            padding: 30px 0;
+        }
+
+        .blogs h1 {
+            text-align: center;
+            color: #6f4f37;
+            margin-bottom: 30px;
+        }
+
+        .blogs .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            border-radius: 30px;
+          
+        }
+
+        .blog-post {
+            width: 30%;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition:transform 0.3s;
+        }
+
+        .blog-img img {
+            width: 100%;
+            max-height: fit-content;
+        }
+
+        .content {
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .content h4 {
+            color: #6f4f37;
+        }
+
+        .content p {
+            color: #555;
+        }
+
+        #blogbtn {
+            background-color: #6f4f37;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #blogbtn:hover {
+            background-color: #c56b3c;
+        }
+
+        .cf{
+
+            align-items: center;
+            padding: 20px;
+        }
+        .blog-post:hover{
+            transform: translateY(-10px);
+            opacity: 0.9;
+            
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .success-border {
+            border: 2px solid green;
+        }
+
+        .error-border {
+            border: 2px solid red;
+
+        }
+
+        .error{
+            padding-bottom: 7px;
+        }
+    
+       </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Coffee with Alisha</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <!-- <a href="about.html">About Us</a> -->
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <form id="contactForm">
+        <h2>Contact Us</h2>
+        <div class="cf">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+"
+               placeholder="Enter your name">
+                <div id="errorName" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <div id="errorEmail" class="error"></div>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="3" required placeholder="Enter your message"></textarea>
+            <div id="errorMessage" class="error"></div>
+        
+        <div id="buttons">
+            <button type="submit" class="submit-button">Submit</button>
+            <button type="reset" class="reset-button">Reset</button>
+        </div></div>
+
+    </form>
+
+
+
+
+    <script>
+        
+        const nameNode = $("#name");
+        const emailNode = $("#email");
+        const messageNode = $("#message");
+        const formNode = $("#contactForm");
+
+        const errorNameNode = $("#errorName");
+        const errorEmailNode = $("#errorEmail");
+        const errorMessageNode = $("#errorMessage");
+
+       
+        const namePattern = /^[A-Za-z\s]+$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        const invalidBorder = "error-border";
+        const validBorder = "success-border";
+
+        
+        function validateName() {
+            const name = nameNode.val();
+            errorNameNode.text("");
+            nameNode.removeClass(`${validBorder} ${invalidBorder}`);
+            if (name === "") {
+                errorNameNode.text("This field is required.");
+                nameNode.addClass(invalidBorder);
+                return false;
+            } else if (!namePattern.test(name)) {
+                errorNameNode.text("Name should only contain letters.");
+                nameNode.addClass(invalidBorder);
+                return false;
+            } else {
+                nameNode.addClass(validBorder);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailNode.val();
+            errorEmailNode.text("");
+            emailNode.removeClass(`${validBorder} ${invalidBorder}`);
+            if (email === "") {
+                errorEmailNode.text("This field is required.");
+                emailNode.addClass(invalidBorder);
+                return false;
+            } else if (!emailPattern.test(email)) {
+                errorEmailNode.text("Please enter a valid email.");
+                emailNode.addClass(invalidBorder);
+                return false;
+            } else {
+                emailNode.addClass(validBorder);
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            const message = messageNode.val();
+            errorMessageNode.text("");
+            messageNode.removeClass(`${validBorder} ${invalidBorder}`);
+            if (message === "") {
+                errorMessageNode.text("This field is required.");
+                messageNode.addClass(invalidBorder);
+                return false;
+            } else if (message.length < 4) {
+                errorMessageNode.text("Message must be at least 4 characters long.");
+                messageNode.addClass(invalidBorder);
+                return false;
+            } else {
+                messageNode.addClass(validBorder);
+                return true;
+            }
+        }
+
+        function validateAll() {
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isMessageValid = validateMessage();
+            return isNameValid && isEmailValid && isMessageValid;
+        }
+
+      
+        nameNode.on("keyup", validateName);
+        emailNode.on("keyup", validateEmail);
+        messageNode.on("keyup", validateMessage);
+
+        formNode.on("submit", function (event) {
+            event.preventDefault(); 
+            if (validateAll()) {
+                alert("Message sent successfully!");
+                formNode.trigger("reset"); 
+                $(".success-border").removeClass("success-border"); 
+            } else {
+                alert("Please correct the errors in the form.");
+            }
+        });
+
+        formNode.on("reset", function () {
+            $(".error").text("");
+            $("input, textarea").removeClass(`${validBorder} ${invalidBorder}`);
+        });
+    </script>
+    
+
+    <section class="blogs" id="blogs">
+        <h1>Our <span>Blogs</span></h1>
+        <div class="container">
+            <div class="blog-post">
+                <div class="blog-img">
+                    <img src="https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.png"
+                        alt="Blog 1" height="300">
+                </div>
+                <div class="content">
+                    <small class="text-muted float-right">Written By Bobby Roy | April 22, 2020</small>
+                    <h4>A Heart Of Coffee</h4>
+                    <p class="text-muted">Coffee has been forever close to my heart. If you ask me, I don't really
+                        remember when exactly I fell in love...</p>
+                    <a href="https://indiancoffeeculture.com/2020/04/22/a-heart-of-coffee/" target="_blank"><button
+                            id="blogbtn">Read More</button></a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="blog-img">
+                    <img src="https://vronns.com/wp-content/uploads/2024/07/Whats-the-Difference-Between-Cold-Brew-and-Iced-Coffee.webp"
+                        alt="Blog 2" height="300">
+                </div>
+                <div class="content">
+                    <small class="text-muted float-right">Written By Kate MacDonnell | April 14, 2023</small>
+                    <h4>Cold Brew vs Iced Coffee</h4>
+                    <p class="text-muted">On the hottest summer days, only one drink sounds good: cold coffee. But
+                        should you choose iced coffee or cold brew?...</p>
+                    <a href="https://coffeeaffection.com/cold-brew-vs-iced-coffee/" target="_blank"><button
+                            id="blogbtn">Read More</button></a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <div class="blog-img">
+                    <img src="https://www.steepedcontent.com/cdn/shop/articles/Coffee_Trends.png?v=1661901457"
+                        alt="Blog 3" height="300">
+                </div>
+                <div class="content">
+                    <small class="text-muted float-right">By Michael Butterworth | January 3, 2023</small>
+                    <h4>Coffee Trends We Hope Go Away in 2023</h4>
+                    <p class="text-muted">I knew I would drink far too much coffee on the trade show floor, but I also
+                        wanted to visit...</p>
+                    <a href="https://www.thecoffeecompass.com/coffee-trends-we-hope-go-away-in-2023/"
+                        target="_blank"><button id="blogbtn">Read More</button></a>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- </main>/ -->
+    <!-- <div class="footer"> -->
+
+    <footer>
+        <p>&copy; 2024 Coffee House (BY ALISHA). All rights reserved.</p>
+    </footer>
+    <!-- </div> -->
+</body>
+
+</html>

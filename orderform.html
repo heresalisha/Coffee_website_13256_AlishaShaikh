@@ -1,208 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee with Alisha</title>
-    <link rel="stylesheet" href="./styles/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee with Alisha</title>
+<link rel="stylesheet" href="/styles/style.css">
+<style>
+nav a:hover {
+background-color: #c56b3c;
+color: white;
+transform: scale(1.1); 
+}
 
-    <style>
-        body {
-            align-items: center;
-        }
+nav a {
+border-bottom: 2px solid transparent;
+}
 
-        #orderform {
-            border: 2px solid #6f4f37;
-            border-radius: 10px;
-            padding: 10px;
-            width: 90%;
-            max-width: 600px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            flex-direction: column;
-            margin-top: 5px;
-            margin-left: 350px;
-        }
+nav a:hover {
+border-bottom: 2px solid #c56b3c; 
+}
 
-        h1 {
-            font-size: 40px;
-            color: #6f4f37;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            text-align: center;
-        }
+@media (max-width: 768px) {
+nav {
+text-align: center;
+margin-top: 10px;
+}
 
-        #tt {
-            border-collapse: collapse;
-            width: 100%;
-            background-color: #fff;
-            border: none;
-        }
+nav a {
+display: block;
+margin: 10px 0;
+}
+}
+table {
+border-collapse: collapse;
+width: 100%; 
+}
+th, td {
+border: 1px solid saddlebrown; 
+text-align: center; 
+padding: 10px;
+}
 
-        #tt td, #tt th {
-            border: none;
-            padding: 10px;
-            text-align: left;
-        }
+th {
+background-color: burlywood; 
+}
+td {
+  position: relative; 
+  transition: transform 0.3s ease; 
+}
 
-        label {
-            font-weight: bold;
-            color: #6f4f37;
-        }
+td:hover {
+  transform: translateY(-10px); 
+  opacity: 0.9; 
+}
+img {
+padding: 10px;
+width: 100%; 
+height: auto; 
+max-width: 200px; 
+}
 
-        select, input[type="text"], input[type="number"], input[type="tel"], input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 6px;
-            border: 1px solid #d1c0a1;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #6f4f37;
-            background-color: #f4f1e1;
-            box-sizing: border-box;
-        }
+figcaption {
+font-size: 14px;
+color: saddlebrown;
+}
 
-        select:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
-            outline: none;
-            border-color: #6f4f37;
-            background-color: #fff;
-        }
 
-        .errorBlock {
-            color: red;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        button {
-            width: 150px;
-            height: 45px;
-            background: transparent;
-            border: 2px solid #b2744c;
-            color: #b2744c;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.5s;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: saddlebrown;
-            color: white;
-        }
-
-        #buttons {
-            text-align: center;
-            width: 100%;
-            display: flex;
-            place-items: center;
-            gap: 40px;
-        }
-    </style>
+</style>
 </head>
-
 <body>
+<header class="header">
+<h1>Coffee with Alisha</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="menu.html">Menu</a>
 
-<section id="orderform">
-    <h1>Place your order here...</h1>
-    <form id="orderForm" onsubmit="return validateAll()">
-        <table id="tt">
-            <tr>
-                <td id="ttt"><label for="coffee">Select the Coffee or Product you want to order:</label></td>
-                <td>
-                    <select id="coffee" name="coffee" required>
-                        <option value="">Select a product</option>
-                        <option value="Dalgona Coffee">Dalgona Coffee</option>
-                        <option value="Brew Espresso Coffee">Brew Espresso Coffee</option>
-                        <option value="Iced Coffee">Iced Coffee</option>
-                        <option value="Black Espresso Coffee">Black Espresso Coffee</option>
-                        <option value="Mocha Coffee">Mocha Coffee</option>
-                        <option value="Mexican Coffee">Mexican Coffee</option>
-                        <option value="Cappuccino Coffee">Cappuccino Coffee</option>
-                        <option value="Arabic Coffee">Arabic Coffee</option>
-                        <option value="Cappuccino Coffee Raw">Cappuccino Coffee Raw</option>
-                        <option value="Black Coffee">Black Coffee</option>
-                        <option value="Decaf Coffee">Decaf Coffee</option>
-                        <option value="Cortado Coffee">Cortado Coffee</option>
-                        <option value="Caramel macchiato">Caramel macchiato</option>
-                    </select>
-                </td>
-            </tr>
-            <tr class="errorBlock">
-                <td></td><td><span id="error1"></span></td>
-            </tr>
-            <tr>
-                <td><label for="quantity">Quantity:</label></td>
-                <td><input type="number" id="quantity" name="quantity" min="1" required></td>
-            </tr>
-            <tr class="errorBlock">
-                <td></td><td><span id="error2"></span></td>
-            </tr>
-            <tr>
-                <td><label for="address">Delivery Address:</label></td>
-                <td><input type="text" id="address" name="address" required></td>
-            </tr>
-            <tr class="errorBlock">
-                <td></td><td><span id="error3"></span></td>
-            </tr>
-            <tr>
-                <td><label for="contact">Contact Number:</label></td>
-                <td><input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required></td>
-            </tr>
-            <tr class="errorBlock">
-                <td></td><td><span id="error4"></span></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email:</label></td>
-                <td><input type="email" id="email" name="email" required></td>
-            </tr>
-            <tr class="errorBlock">
-                <td></td><td><span id="error5"></span></td>
-            </tr>
-        </table>
-        
-        <div colspan="2" id="buttons">
-            <button style="margin-left: 33px;" type="submit" class="submit-button">Submit</button>
-            <button type="reset" class="reset-button">Reset</button>
-            <a href="./index.html" class="back-button" style="text-decoration: none;">
-        <button type="button" class="back-button">Back to Home</button>
-        </div>
-    </form>
-</section>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
 
-<script>
+<main>
+<h2 style="color: saddlebrown;">Our Menu</h2>
+<figure style="border: 2px solid burlywood;">
+<table>
+<tr>
+</tr>
+<tr>
+<td>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9nGar__qpP8VnngQpZz7lNcAK1plzaAxMKA&s" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Dalgona Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span>
+</td>
+<td>
+<img src="https://cloudfront-eu-central-1.images.arcpublishing.com/williamreed/AEP3K6TEUFLJXI7FTXHJOI4W4E.jpg" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Espresso Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹120 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span> 
+</td>
+<td>
+<img src="https://www.folgerscoffee.com/folgers/recipes/_Hero%20Images/Detail%20Pages/5598/image-thumb__5598__schema_image/MochaIced-hero.58f3878d.jpg" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Iced Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹50 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html','_self' )">Order Now</button>
+</span>
+</td>
 
-document.getElementById('contact').addEventListener('input', function() {
-    var contactNumber = this.value;
+<td>
+<img src="https://www.thespruceeats.com/thmb/Hz677yfVdPECquUOekjv0b9yXTE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-mocha-4797918-step-04-599987714aec41aba02f1f870e900dd8.jpg" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Mocha Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span>
+</td>
+</tr>
 
-    
-    if (contactNumber.length > 10) {
-        
-        this.value = contactNumber.slice(0, 10);
-        
-        
-        document.getElementById('error4').textContent = "Mobile number cannot exceed 10 digits.";
-    } else {
-      
-        document.getElementById('error4').textContent = "";
-    }
-});
+<tr>
+<td>
+<img src="https://ik.imagekit.io/vjt1kualr/drinks/mexican_coffee/main-image.jpg" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Mexican Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span>
+</td>
+<td>
+<img src="https://static.vecteezy.com/system/resources/thumbnails/042/721/834/small/turkish-coffee-isolated-on-transparent-background-free-png.png" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Arabic Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span>
+</td>
+<td>
+<img src="https://weaverscoffee.com/cdn/shop/articles/Cup_of_aromatic_decaf_coffee_and_beans_on_white_wooden_table_and_lay_flat._1000x.jpg?v=1694980153" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Decaf Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span>
+</td>
+<td>
+<img src="https://www.foodandwine.com/thmb/0cJWTx1_qsIJJE74hWLZ5rHWvsE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Partners-Cappuccino-FT-BLOG0523-d2eed8fcd48d464282176339908662f7.jpg" style="width: 200px; height: 200px;" alt="A cup of coffee">
+<figcaption style ="color: saddlebrown;"><h4>Cappuccino Coffee</h4></figcaption>
+<figcaption style ="color: saddlebrown;"><h4>₹200 </h4></figcaption>
+<span><button id="order-btn" onclick="window.open('orderform.html', '_self')">Order Now</button>
+</span></td>
+</tr>
+</table>
+</main>
 
-/
-document.getElementById('email').addEventListener('input', function() {
-    var email = this.value;
-    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    
-    if (!emailRegex.test(email)) {
-        document.getElementById('error5').textContent = "Please enter a valid email address.";
-    } else {
-        document.getElementById('error5').textContent = ""; 
-    }
-});
-</script>
-
-<script src="./scripts/script.js"></script>
+<footer>
+<p>&copy; 2024 Coffee House (BY ALISHA). All rights reserved .</p>
+</footer>
 </body>
 </html>
